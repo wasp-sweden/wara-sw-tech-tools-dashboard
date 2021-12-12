@@ -1,0 +1,11 @@
+include tep_dashboard/tep_dashboard.min.js
+include tep_dashboard/tep_dashboard.min.js.map
+include tep_dashboard/async-*.js
+include tep_dashboard/async-*.js.map
+include tep_dashboard/*-shared.js
+include tep_dashboard/*-shared.js.map
+include tep_dashboard/metadata.json
+include tep_dashboard/package-info.json
+include README.md
+include LICENSE
+include package.json
