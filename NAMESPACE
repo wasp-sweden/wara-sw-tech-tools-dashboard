@@ -1,4 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 export(Dashboard)
+export(Main)
+export(Menu)
 export(dashboard)
+export(main)
+export(menu)

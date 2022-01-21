@@ -10,6 +10,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useState } from 'react';
 import { drawerWidth } from './Menu.react';
+import Box from '@material-ui/core/Box';
+import Main from './Main.react';
+import { CssBaseline } from '@material-ui/core';
 
 
 const useStyles = makeStyles( (theme) => ({
@@ -26,6 +29,12 @@ const useStyles = makeStyles( (theme) => ({
           easing: theme.transitions.easing.easeOut,
           duration: theme.transitions.duration.enteringScreen,
         }),
+    },
+    main: {
+        backgroundColor: "black",
+        flexGrow: 1,
+        height: "100vh",
+        overflow: "auto",
     },
 }))
 
@@ -47,6 +56,7 @@ export default function Dashboard(props) {
     // TO-DO: "dashboards" should be prop for Dashboard
     return (
         <div id={id}>
+            <CssBaseline/>
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {
@@ -61,7 +71,8 @@ export default function Dashboard(props) {
                         <MenuIcon />
                     </IconButton>
                 </Toolbar>
-            </AppBar>
+            </AppBar> 
+            <Toolbar/>
             <Menu 
                 toggle={toggle}
                 isOpen={open}
@@ -70,24 +81,9 @@ export default function Dashboard(props) {
                     vaccinate: "V.A.C.C.I.N.A.T.E",
             } }>
             </Menu>
-            <Button variant="contained">TEP Dashboard</Button>
-            <div style={{backgroundColor: "20px", padding: "20px", backgroundColor: "green"}}>{children}</div>
-            What: {label}&nbsp;
-            <input
-                value={value}
-                onChange={
-                    /*
-                        * Send the new value to the parent component.
-                        * setProps is a prop that is automatically supplied
-                        * by dash's front-end ("dash-renderer").
-                        * In a Dash app, this will update the component's
-                        * props and send the data back to the Python Dash
-                        * app server if a callback uses the modified prop as
-                        * Input or State.
-                        */
-                    e => setProps({ value: e.target.value })
-                }
-            />
+            <div className={classes.main}>
+                <Main/>
+            </div>
         </div>
     );
 }
