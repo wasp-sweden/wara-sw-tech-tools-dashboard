@@ -3,6 +3,8 @@
 export(Dashboard)
 export(Main)
 export(Menu)
+export(Widget)
 export(dashboard)
 export(main)
+export(widget)
 export(menu)

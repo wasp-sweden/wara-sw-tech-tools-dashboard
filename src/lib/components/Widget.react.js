@@ -1,48 +1,32 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import GridLayout, { WidthProvider } from "react-grid-layout";
-import Widget from './Widget.react';
-
-const Grid = WidthProvider(GridLayout)
 
 const useStyles = makeStyles((theme) => ({
-    layout: {
-        "&>div": {backgroundColor: "white"},    
-    },
+    widget: {
+        height: "100%",
+        width: "100%"
+    }
 }))
 
 /**
- * Main is the part of the dashboard
- * that displays all data.
+ * A widget to display data in the grid
  */
-export default function Main(props) {
+ export default function Widget(props) {
     const {id, label, setProps, value, children} = props;
     const classes = useStyles();
     const theme = useTheme();
-
-    const layout = [
-        {i: 'a', x: 0, y: 0, w: 2, h: 2, static: true},
-        {i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4},
-        {i: 'c', x: 4, y: 0, w: 1, h: 2},
-        {i: 'd', x: 6, y: 0, w:1, h:2}
-      ];
-    
     
     return (
-        <Grid className={classes.layout}>
-            <div key='d'>
-                <Widget>
-                    
-                </Widget>
-            </div>
-        </Grid>
+        <div className={classes.widget}>
+            {children}
+        </div> 
     );
 }
 
-Main.defaultProps = {};
+Widget.defaultProps = {};
 
-Main.propTypes = {
+Widget.propTypes = {
     /**
      * The ID used to identify this component in Dash callbacks.
      */
