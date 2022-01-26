@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
+// TO-DO: A widget should include meta-data
+
 const useStyles = makeStyles((theme) => ({
     widget: {
         height: "100%",
