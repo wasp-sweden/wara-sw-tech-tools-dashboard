@@ -124,7 +124,7 @@
     }
   },
   "src/lib/components/Widget.react.js": {
-    "description": "Main is the part of the dashboard\nthat displays all data.",
+    "description": "A widget to display data in the grid",
     "displayName": "Widget",
     "methods": [],
     "props": {

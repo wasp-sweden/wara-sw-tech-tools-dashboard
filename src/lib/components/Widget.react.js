@@ -5,7 +5,10 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     widget: {
         height: "100%",
-        width: "100%"
+        width: "100%",
+        "&>*": {
+            height: "100%"
+        }    
     }
 }))
 

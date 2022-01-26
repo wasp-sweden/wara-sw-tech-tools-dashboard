@@ -13,6 +13,7 @@ import { drawerWidth } from './Menu.react';
 import Box from '@material-ui/core/Box';
 import Main from './Main.react';
 import { CssBaseline } from '@material-ui/core';
+import { styled, createTheme, ThemeProvider } from '@material-ui/core';
 
 
 const useStyles = makeStyles( (theme) => ({
@@ -31,12 +32,14 @@ const useStyles = makeStyles( (theme) => ({
         }),
     },
     main: {
-        backgroundColor: "black",
+        backgroundColor: "grey",
         flexGrow: 1,
         height: "100vh",
         overflow: "auto",
     },
 }))
+
+
 
 /**
  * ExampleComponent is an example component.
@@ -55,7 +58,7 @@ export default function Dashboard(props) {
     
     // TO-DO: "dashboards" should be prop for Dashboard
     return (
-        <div id={id}>
+        <ThemeProvider theme={theme}>
             <CssBaseline/>
             <AppBar
                 position="fixed"
@@ -82,9 +85,11 @@ export default function Dashboard(props) {
             } }>
             </Menu>
             <div className={classes.main}>
-                <Main/>
+                <Main>
+                    {children}
+                </Main>
             </div>
-        </div>
+        </ThemeProvider>
     );
 }
 

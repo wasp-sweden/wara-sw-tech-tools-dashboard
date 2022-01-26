@@ -5,8 +5,7 @@ from dash.development.base_component import Component, _explicitize_args
 
 class Widget(Component):
     """A Widget component.
-Main is the part of the dashboard
-that displays all data.
+A widget to display data in the grid
 
 Keyword arguments:
 

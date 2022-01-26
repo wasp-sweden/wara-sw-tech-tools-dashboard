@@ -6,7 +6,7 @@
 \title{Widget component}
 
 \description{
-Main is the part of the dashboard that displays all data.
+A widget to display data in the grid
 }
 
 \usage{

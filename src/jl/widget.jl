@@ -9,8 +9,7 @@ export widget
 
 
 A Widget component.
-Main is the part of the dashboard
-that displays all data.
+A widget to display data in the grid
 Keyword arguments:
 - `children` (a list of or a singular dash component, string or number; optional): Children.
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.

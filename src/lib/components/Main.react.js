@@ -8,7 +8,7 @@ const Grid = WidthProvider(GridLayout)
 
 const useStyles = makeStyles((theme) => ({
     layout: {
-        "&>div": {backgroundColor: "white"},    
+        "&>div": {backgroundColor: "white"},
     },
 }))
 
@@ -25,15 +25,21 @@ export default function Main(props) {
         {i: 'a', x: 0, y: 0, w: 2, h: 2, static: true},
         {i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4},
         {i: 'c', x: 4, y: 0, w: 1, h: 2},
-        {i: 'd', x: 6, y: 0, w:1, h:2}
+        {i: 'd', x: 6, y: 0, w:4, h:4}
       ];
     
+    // TO-DO: make children to widgets and display all children
     
     return (
-        <Grid className={classes.layout}>
+        <Grid 
+            className={classes.layout}
+            layout={layout}
+            cols={12}
+            rowHeight={30}
+        >
             <div key='d'>
                 <Widget>
-                    
+                    {children}
                 </Widget>
             </div>
         </Grid>
