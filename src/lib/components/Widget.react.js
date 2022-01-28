@@ -8,10 +8,21 @@ const useStyles = makeStyles((theme) => ({
     widget: {
         height: "100%",
         width: "100%",
+        display: "flex",
+        flexDirection: "column"
+    },
+    titleBar: {
+        height: "20px",
+        backgroundColor: "blue",
+    },
+    content: {
+        flexGrow: 1,
         "&>*": {
-            height: "100%"
-        }    
-    }
+            height: "100%",
+            width: "100%",
+        },
+        overflow: "hidden",
+    },
 }))
 
 /**
@@ -24,7 +35,12 @@ const useStyles = makeStyles((theme) => ({
     
     return (
         <div className={classes.widget}>
-            {children}
+            <div className={`${classes.titleBar} titleBar`}>
+                title
+            </div>
+            <div className={classes.content} >
+                {children}
+            </div>  
         </div> 
     );
 }

@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import GridLayout, { WidthProvider } from "react-grid-layout";
-import Widget from './Widget.react';
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
 
 const Grid = WidthProvider(GridLayout)
 
 const useStyles = makeStyles((theme) => ({
     layout: {
-        "&>div": {backgroundColor: "white"},
+        "&>div": 
+            {backgroundColor: "white"},
     },
 }))
 
@@ -31,22 +33,18 @@ export default function Main(props) {
     // *BUG* widgets are not resizeable. Try adding handle?
     
     return (
-        <Grid 
-            className={classes.layout}
-            layout={layout}
-            cols={12}
-            rowHeight={50}
-        >
-            {children.map( (widget, key) => <div key={key}> {widget} </div>)}
-        </Grid>
+            <Grid 
+                className={classes.layout}
+                layout={layout}
+                cols={12}
+                rowHeight={50}
+                isResizable
+                draggableHandle=".titleBar"
+            >
+                {children.map( (widget, key) => <div key={key}> {widget} </div>)}
+            </Grid>
     );
 }
-
-/* <div key='d'>
-                <Widget>
-                    {children}
-                </Widget>
-            </div> */
 
 Main.defaultProps = {};
 
