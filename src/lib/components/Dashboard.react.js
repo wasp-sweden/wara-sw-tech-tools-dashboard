@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
 import Button from '@material-ui/core/Button';
-import Menu from './Menu.react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import clsx from 'clsx';
@@ -11,10 +11,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { useState } from 'react';
 import { drawerWidth } from './Menu.react';
 import Box from '@material-ui/core/Box';
-import Main from './Main.react';
 import { CssBaseline } from '@material-ui/core';
 import { styled, createTheme, ThemeProvider } from '@material-ui/core';
 
+import Main from './Main.react';
+import Menu from './Menu.react';
+import InfoPanel from './InfoPanel.react';
 
 const useStyles = makeStyles( (theme) => ({
     appBar: {
@@ -52,9 +54,9 @@ export default function Dashboard(props) {
     const {id, label, setProps, value, children} = props;
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = useState(false);
+    const [isMenuOpen, setisMenuOpen] = useState(false);
 
-    const toggle = () => { setOpen(!open) };
+    const toggleMenu = () => { setisMenuOpen(!isMenuOpen) };
     
     // TO-DO: "dashboards" should be prop for Dashboard
     return (
@@ -63,13 +65,13 @@ export default function Dashboard(props) {
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
+                    [classes.appBarShift]: isMenuOpen,
                 })}
             >
                 <Toolbar>
                     <IconButton 
                     aria-label="menu"
-                    onClick={toggle}
+                    onClick={toggleMenu}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -77,18 +79,22 @@ export default function Dashboard(props) {
             </AppBar> 
             <Toolbar/>
             <Menu 
-                toggle={toggle}
-                isOpen={open}
+                toggle={toggleMenu}
+                isOpen={isMenuOpen}
                 dashboards={ {
                     depclean: "DepClean",
                     vaccinate: "V.A.C.C.I.N.A.T.E",
             } }>
             </Menu>
-            <div className={classes.main}>
-                <Main>
-                    {children}
-                </Main>
-            </div>
+            <InfoPanel
+                isOpen={false}
+            >
+
+            </InfoPanel>
+            <Main className={classes.main}>
+                {children}
+            </Main>
+            
         </ThemeProvider>
     );
 }

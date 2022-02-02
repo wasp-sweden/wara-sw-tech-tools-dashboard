@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
  * It renders an input with the property `value`
  * which is editable by the user.
  */
-export default function Menu(props) {
+export default function InfoPanel(props) {
     const { id, setProps, dashboards, toggle, isOpen } = props;
     const classes = useStyles();
     const theme = useTheme();
@@ -43,32 +43,20 @@ export default function Menu(props) {
     return (
         <Drawer
             className={classes.drawer}
-            anchor="left"
+            anchor="right"
             open={isOpen}
             classes={{
                 paper: classes.drawerPaper,
             }}
         >
-            <div className={classes.drawerHeader}>
-                <IconButton onClick={toggle}>
-                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>
-            </div>
-            <Divider />
-            <List>
-                {Object.keys(dashboards).map(key => (
-                <ListItem button key={key}>
-                    <ListItemText primary={dashboards[key]} />
-                </ListItem>
-            ))}
-            </List>
+            
         </Drawer>
     )
 }
 
-Menu.defaultProps = {};
+InfoPanel.defaultProps = {};
 
-Menu.propTypes = {
+InfoPanel.propTypes = {
 
     /**
      * The ID used to identify this component in Dash callbacks.

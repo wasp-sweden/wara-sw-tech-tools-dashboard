@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Paper, Typography } from '@material-ui/core';
+import { AppBar } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 // TO-DO: A widget should include meta-data
 
@@ -12,8 +15,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column"
     },
     titleBar: {
-        height: "20px",
-        backgroundColor: "blue",
+        
     },
     content: {
         flexGrow: 1,
@@ -34,14 +36,22 @@ const useStyles = makeStyles((theme) => ({
     const theme = useTheme();
     
     return (
-        <div className={classes.widget}>
-            <div className={`${classes.titleBar} titleBar`}>
-                title
-            </div>
-            <div className={classes.content} >
+        <Paper 
+            className={classes.widget}
+            elevation={3}
+        >
+            <AppBar 
+                className={`${classes.titleBar} titleBar`}
+                position="static"
+            >
+                <Typography variant="h6">
+                    Title
+                </Typography>
+            </AppBar>
+            <Box className={classes.content} >
                 {children}
-            </div>  
-        </div> 
+            </Box>  
+        </Paper> 
     );
 }
 
