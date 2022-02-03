@@ -34,14 +34,25 @@ const useStyles = makeStyles( (theme) => ({
         }),
     },
     main: {
-        backgroundColor: "grey",
         flexGrow: 1,
         height: "100vh",
         overflow: "auto",
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        marginRight: -drawerWidth,
+    },
+    mainShift: {
+        transition: theme.transitions.create('margin', {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginRight: 0,
     },
 }))
 
-
+export const DashboardContext = React.createContext({ showMetaData: () => {} })
 
 /**
  * ExampleComponent is an example component.
@@ -54,9 +65,17 @@ export default function Dashboard(props) {
     const {id, label, setProps, value, children} = props;
     const classes = useStyles();
     const theme = useTheme();
-    const [isMenuOpen, setisMenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isPanelOpen, setIsPanelOpen] = useState(false)
+    const [metaData, setMetaData] = useState({})
 
-    const toggleMenu = () => { setisMenuOpen(!isMenuOpen) };
+    const toggleMenu = () => { setIsMenuOpen(!isMenuOpen) }
+
+    const showMetaData = meta => {
+        setMetaData(meta)
+        console.log(meta)
+        setIsPanelOpen(!isPanelOpen)
+    } 
     
     // TO-DO: "dashboards" should be prop for Dashboard
     return (
@@ -86,15 +105,19 @@ export default function Dashboard(props) {
                     vaccinate: "V.A.C.C.I.N.A.T.E",
             } }>
             </Menu>
+            <DashboardContext.Provider value={showMetaData}>
+                <Main 
+                    className={clsx(classes.main, {
+                        [classes.mainShift]: !isPanelOpen,
+                })}>
+                    {children}
+                </Main>
+            </DashboardContext.Provider>
             <InfoPanel
-                isOpen={false}
+                isOpen={isPanelOpen}
+                meta={metaData}
             >
-
             </InfoPanel>
-            <Main className={classes.main}>
-                {children}
-            </Main>
-            
         </ThemeProvider>
     );
 }
