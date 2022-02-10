@@ -1,14 +1,17 @@
+import React from 'react';
+
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import React from 'react';
 import Divider from '@material-ui/core/Divider';
-import { List, ListItem } from '@material-ui/core';
+import { AppBar, List, ListItem, Toolbar } from '@material-ui/core';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Paper } from '@material-ui/core';
 import { Palette, PaletteRounded } from '@material-ui/icons';
+
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
 import { drawerWidth } from './Menu.react';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,14 +22,6 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: drawerWidth,
         backgroundColor: theme.palette.background.default,
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
     },
     metaPaper: {
         margin: theme.spacing(2),
@@ -83,6 +78,8 @@ export default function InfoPanel(props) {
                 paper: classes.drawerPaper,
             }}
         >
+            <Toolbar/>
+            <Divider/>
             <Paper
                 className={classes.metaPaper} 
                 classes={{

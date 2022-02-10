@@ -2,7 +2,7 @@ import React, {Component, useContext} from 'react';
 import PropTypes from 'prop-types';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Toolbar, Typography } from '@material-ui/core';
 import { AppBar } from '@material-ui/core';
 import { Box } from '@material-ui/core';
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
  * A widget to display data in the grid
  */
  export default function Widget(props) {
-    const {id, label, setProps, value, meta, children} = props;
+    const {id, label, setProps, value, title, meta, children} = props;
     const classes = useStyles();
     const theme = useTheme();
     const showMetaData = useContext(DashboardContext);
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
                 position="static"
             >
                 <Typography variant="h6">
-                    {meta["subject"].charAt(0).toUpperCase() + meta["subject"].substring(1)}
+                    {title}
                 </Typography>
             </AppBar>
             <Box 
@@ -77,6 +77,11 @@ Widget.propTypes = {
      * The value displayed in the input.
      */
     value: PropTypes.string,
+
+    /**
+     * The title that will be displayed on the widget.
+     */
+    title: PropTypes.string,
 
     /**
      * Meta data for the widget

@@ -40,18 +40,11 @@ const useStyles = makeStyles( (theme) => ({
         flexGrow: 1,
         height: "100vh",
         overflow: "auto",
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        marginRight: -drawerWidth,
+        marginRight: 0,
     },
     mainShift: {
-        transition: theme.transitions.create('margin', {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginRight: 0,
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginRight: drawerWidth,
     },
 }))
 
@@ -80,6 +73,7 @@ export default function Dashboard(props) {
         setMetaData(meta)
         console.log(meta)
         setIsPanelOpen(!isPanelOpen)
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 1);
     } 
     
     // TO-DO: "dashboards" should be prop for Dashboard
@@ -113,7 +107,7 @@ export default function Dashboard(props) {
             <DashboardContext.Provider value={showMetaData}>
                 <Main 
                     className={clsx(classes.main, {
-                        [classes.mainShift]: !isPanelOpen,
+                        [classes.mainShift]: isPanelOpen,
                 })}>
                     {children_}
                 </Main>

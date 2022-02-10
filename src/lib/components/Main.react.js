@@ -4,6 +4,9 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import GridLayout, { WidthProvider } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import clsx from 'clsx';
+
+
 
 import { SizeContext } from "./visualization/depclean/DepcleanGraph";
 
@@ -39,7 +42,7 @@ const GridComponent = ({ children }) => {
  * that displays all data.
  */
 export default function Main(props) {
-    const {id, label, setProps, value, children} = props;
+    const {id, label, setProps, value, className, children} = props;
     const classes = useStyles();
     const theme = useTheme();
 
@@ -49,12 +52,10 @@ export default function Main(props) {
         {i: '2', x: 4, y: 0, w: 6, h: 6},
         {i: '3', x: 6, y: 0, w:6, h:6}
       ];
-
-    // *BUG* widgets are not resizeable. Try adding handle?
     
     return (
             <Grid 
-                className={classes.layout}
+                className={clsx(classes.layout, className)}
                 layout={layout}
                 cols={12}
                 rowHeight={50}
