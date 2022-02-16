@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
     },
     dragIcon: {
+        cursor: "grab",
+    },
+    tools: {
+        display: "flex",
+        alignItems: "center"
     },
     content: {
         flexGrow: 1,
@@ -64,10 +69,12 @@ const useStyles = makeStyles((theme) => ({
                     <Typography variant="h6">
                         {title}
                     </Typography>
-                    <div>
-                        <IconButton className={`${classes.dragIcon} dragIcon`}>
-                            <DragIndicatorIcon/>
-                        </IconButton>
+                    <div className={classes.tools}>
+                        <DragIndicatorIcon 
+                            className={`${classes.dragIcon} dragIcon`}
+                            color={theme.palette.text.secondary}
+                        >
+                        </DragIndicatorIcon>
                         <IconButton onClick={ () => showMetaData(meta, key)}>
                             <VisibilityIcon position="right">
                             </VisibilityIcon>
