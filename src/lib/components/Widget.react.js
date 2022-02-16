@@ -5,6 +5,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Paper, Toolbar, Typography } from '@material-ui/core';
 import { AppBar } from '@material-ui/core';
 import { Box } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 
@@ -26,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
     },
     dragIcon: {
-        cursor: "grab",
-        marginRight: "8px",
     },
     content: {
         flexGrow: 1,
@@ -66,16 +65,14 @@ const useStyles = makeStyles((theme) => ({
                         {title}
                     </Typography>
                     <div>
-                        <DragIndicatorIcon className={`${classes.dragIcon} dragIcon`}>
-
-                        </DragIndicatorIcon>
-                        <VisibilityIcon 
-                            position="right"
-                            onClick={ () =>
-                                showMetaData(meta, key)
-                            } 
-                        >
-                        </VisibilityIcon>
+                        <IconButton className={`${classes.dragIcon} dragIcon`}>
+                            <DragIndicatorIcon/>
+                        </IconButton>
+                        <IconButton onClick={ () => showMetaData(meta, key)}>
+                            <VisibilityIcon position="right">
+                            </VisibilityIcon>
+                        </IconButton>
+                        
                     </div>
                 </Toolbar>
             </AppBar>

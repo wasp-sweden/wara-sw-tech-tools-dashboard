@@ -39,7 +39,7 @@ const useStyles = makeStyles( (theme) => ({
     main: {
         flexGrow: 1,
         height: "100vh",
-        overflow: "auto",
+        overflow: "visible",
         marginRight: 0,
     },
     mainShift: {
