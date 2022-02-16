@@ -6,7 +6,7 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import clsx from 'clsx';
 
-import { SizeContext } from "./visualization/depclean/DepcleanGraph";
+import { SizeContext } from "./visualization/depclean/DepcleanGraph.react";
 
 const Grid = WidthProvider(GridLayout)
 

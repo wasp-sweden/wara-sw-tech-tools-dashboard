@@ -2,7 +2,7 @@
 import Dashboard from './components/Dashboard.react';
 import Widget from './components/Widget.react';
 import InfoPanel from './components/InfoPanel.react'
-import DepcleanGraph from './components/visualization/depclean/DepcleanGraph.js';
+import DepcleanGraph from './components/visualization/depclean/DepcleanGraph.react';
 
 export {
     Dashboard,

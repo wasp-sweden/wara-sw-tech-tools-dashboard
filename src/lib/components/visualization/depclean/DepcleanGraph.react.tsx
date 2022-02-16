@@ -19,7 +19,8 @@ import "./DepcleanGraph.css";
 // TODO: this needs to live somewhere else
 export const SizeContext = React.createContext({ width: 0, height: 0 });
 
-export const DepcleanGraph = ({ data }: { data: any}) => {
+/** DepClean graph */
+export default function DepcleanGraph({ data }: { data: any}) {
 
     //const ref = useRef<HTMLDivElement>(null);
 
