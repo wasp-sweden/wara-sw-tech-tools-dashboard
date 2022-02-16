@@ -5,10 +5,10 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Paper, Toolbar, Typography } from '@material-ui/core';
 import { AppBar } from '@material-ui/core';
 import { Box } from '@material-ui/core';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 
-import { DashboardContext } from './Dashboard.react';
-
-// TO-DO: A widget should include meta-data
+import { WidgetContext } from './Main.react';
 
 const useStyles = makeStyles((theme) => ({
     widget: {
@@ -18,7 +18,16 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
     },
     titleBar: {
-        padding: theme.spacing(1),
+       
+    },
+    toolBar: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    dragIcon: {
+        cursor: "grab",
+        marginRight: "8px",
     },
     content: {
         flexGrow: 1,
@@ -38,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     const {id, label, setProps, value, title, meta, children} = props;
     const classes = useStyles();
     const theme = useTheme();
-    const showMetaData = useContext(DashboardContext);
+    const { showMetaData, key } = useContext(WidgetContext);
     
     return (
         <Paper 
@@ -46,18 +55,32 @@ const useStyles = makeStyles((theme) => ({
             elevation={3}
         >
             <AppBar 
-                className={`${classes.titleBar} titleBar`}
+                className={classes.titleBar}
                 position="static"
             >
-                <Typography variant="h6">
-                    {title}
-                </Typography>
+                <Toolbar 
+                    className={classes.toolBar}
+                    variant="dense"
+                >
+                    <Typography variant="h6">
+                        {title}
+                    </Typography>
+                    <div>
+                        <DragIndicatorIcon className={`${classes.dragIcon} dragIcon`}>
+
+                        </DragIndicatorIcon>
+                        <VisibilityIcon 
+                            position="right"
+                            onClick={ () =>
+                                showMetaData(meta, key)
+                            } 
+                        >
+                        </VisibilityIcon>
+                    </div>
+                </Toolbar>
             </AppBar>
             <Box 
                 className={classes.content}
-                onClick={ () =>
-                    showMetaData(meta)
-                } 
             >
                 {children}
             </Box>  

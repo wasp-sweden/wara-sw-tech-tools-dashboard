@@ -48,8 +48,6 @@ const useStyles = makeStyles( (theme) => ({
     },
 }))
 
-export const DashboardContext = React.createContext({ showMetaData: () => {} })
-
 /**
  * ExampleComponent is an example component.
  * It takes a property, `label`, and
@@ -62,17 +60,22 @@ export default function Dashboard(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isPanelOpen, setIsPanelOpen] = useState(false)
+    //const [isPanelOpen, setIsPanelOpen] = useState(false)
     const [metaData, setMetaData] = useState({})
+    const [metaDataKey, setMetaDataKey] = useState(-1)
+    const isPanelOpen = metaDataKey !== -1;
 
     const children_ = [...children, <Widget meta={TEST_DATA.meta}><DepcleanGraph data={TEST_DATA.results}/></Widget>];
 
     const toggleMenu = () => { setIsMenuOpen(!isMenuOpen) }
 
-    const showMetaData = meta => {
+    const showMetaData = (meta, key) => {
         setMetaData(meta)
-        console.log(meta)
-        setIsPanelOpen(!isPanelOpen)
+        if (key === metaDataKey) {
+            setMetaDataKey(-1)
+        } else {
+            setMetaDataKey(key)
+        }
         setTimeout(() => window.dispatchEvent(new Event('resize')), 1);
     } 
     
@@ -104,14 +107,14 @@ export default function Dashboard(props) {
                     vaccinate: "V.A.C.C.I.N.A.T.E",
             } }>
             </Menu>
-            <DashboardContext.Provider value={showMetaData}>
                 <Main 
                     className={clsx(classes.main, {
                         [classes.mainShift]: isPanelOpen,
-                })}>
-                    {children_}
+                    })}
+                    showMetaData={showMetaData}
+                >
+                    {children}
                 </Main>
-            </DashboardContext.Provider>
             <InfoPanel
                 isOpen={isPanelOpen}
                 meta={metaData}

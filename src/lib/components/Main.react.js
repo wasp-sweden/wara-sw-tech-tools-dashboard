@@ -6,11 +6,11 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import clsx from 'clsx';
 
-
-
 import { SizeContext } from "./visualization/depclean/DepcleanGraph";
 
 const Grid = WidthProvider(GridLayout)
+
+export const WidgetContext = React.createContext({ showMetaData: () => {}, key: -1 })
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -42,7 +42,7 @@ const GridComponent = ({ children }) => {
  * that displays all data.
  */
 export default function Main(props) {
-    const {id, label, setProps, value, className, children} = props;
+    const {id, label, setProps, value, showMetaData, className, children} = props;
     const classes = useStyles();
     const theme = useTheme();
 
@@ -60,9 +60,16 @@ export default function Main(props) {
                 cols={12}
                 rowHeight={50}
                 isResizable
-                draggableHandle=".titleBar"
+                draggableHandle=".dragIcon"
             >
-                {children.map( (widget, key) => <div key={key}>{widget}</div>)}
+                {children.map( (widget, key) => 
+                    <div key={key}> 
+                        <WidgetContext.Provider
+                            value={{showMetaData, key}}
+                        >
+                            {widget}
+                        </WidgetContext.Provider> 
+                    </div>)}
             </Grid>
     );
 }
