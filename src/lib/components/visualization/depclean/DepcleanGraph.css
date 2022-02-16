@@ -1,0 +1,920 @@
+.depcleanGraph .ant-layout-header{
+  background:white;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.06);
+  z-index: 1;
+}
+.depcleanGraph .sideMenu{
+  background-color: #F1F3F5;
+}
+.depcleanGraph .sideMenu .ant-layout-sider-children{
+  padding: 212px 0 0 30px;
+  display: flex;
+    flex-direction: column;
+}
+
+
+.depcleanGraph .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+  margin-left: 0px;
+}
+
+/* MENU STYLES */
+.depcleanGraph .ant-menu-item{
+  font-size: 16px;
+  font-weight: 700;
+  color: hsla(0,0%,0%, .6);
+}
+
+.depcleanGraph .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected{
+  color:#78B06E;
+}
+.depcleanGraph .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected{
+  color: #78B06E;
+  border-bottom: 2px solid #78B06E;
+}
+
+.depcleanGraph .right-item{
+  position: 'absolute'; 
+  top: 0;
+  right: 0;
+}
+
+
+
+.depcleanGraph .vizContainer{
+  background-color: white;
+  position:relative;
+}
+
+.depcleanGraph .flex-list{
+  display: flex !important;
+  flex-direction: column;
+}
+
+.depcleanGraph .treeLink{
+  /* fill:none; */
+  /* background-image: linear-gradient(to right, red , yellow); */
+  /* fill:gray;/ */
+  /* opacity: 0.5!important; */
+  /* stroke: hsla(0,0%,0%, 0.2); */
+  /* stroke-width: 1px; */
+  transition: all 0.2s ease-out;
+}
+
+.depcleanGraph .treeLink-ommited{
+  fill:none;
+  stroke-dasharray:4 1 2;
+  stroke: rgb(43, 134, 237);
+  stroke-width: 1px;
+  /* opacity: 0.4; */
+}
+
+.depcleanGraph .treeLink-highlight{
+  /* stroke:hsla(2,79%,68%, 0.8); */
+  /* stroke-dasharray:4 1 2; */
+  fill:#EF433C !important;
+}
+
+.depcleanGraph .treeLink-visible{
+  opacity: 1;
+}
+
+.depcleanGraph .treeLink-invisible{
+  opacity: 0.1 !important;
+}
+
+.depcleanGraph .omitted-label{
+  fill: rgb(43, 134, 237);
+  opacity: 0.4;
+  font-size: 10px;
+}
+
+.depcleanGraph .ommited-invislbe{
+  opacity:0.1;
+}
+
+
+
+
+.depcleanGraph .node{
+  transition: all 0.2s ease-out;
+}
+
+.depcleanGraph .node-internal{
+  /* stroke:gray; */
+  /* fill:white; */
+  stroke-width:3;
+
+}
+.depcleanGraph .node-leaf{
+  /* stroke:gray; */
+  /* fill:gray; */
+  stroke-width:3;
+}
+
+.depcleanGraph .node-parent{
+  /* stroke:#64C19A ; */
+  /* fill:white; */
+  stroke-width:8;
+}
+
+.depcleanGraph .node-highlight{
+  /* fill:red; */
+  /* stroke-width:3; */
+  fill:#EF433C;
+}
+
+.depcleanGraph .node-visible{
+  opacity: 1;
+}
+
+.depcleanGraph .node-invisible{
+  opacity: 0.1;
+}
+
+.depcleanGraph .node-deleted{
+  opacity:0.1;
+}
+.depcleanGraph .treeLink-deleted{
+  opacity:0!important;
+}
+
+.depcleanGraph .site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+
+.depcleanGraph .dependency-list{
+  width: 400px;
+  position: absolute;
+  left: 50px;
+  z-index: 40;
+}
+
+.depcleanGraph .filterButton{
+  /* position: absolute; */
+  font-size: 16px;
+  font-weight: 400;
+  /* right: 70px; */
+  /* background-color:#64C19A; */
+  /* border-color: transparent; */
+  z-index: 100;
+}
+
+
+.depcleanGraph #ButtonGroup{
+  position: absolute;
+  font-size: 16px;
+  font-weight: 400;
+  right: 70px;
+  /* background-color:#64C19A; */
+  /* border-color: transparent; */
+  display:flex;
+  z-index: 100;
+}
+
+.depcleanGraph .button-basic{
+  font-size: 16px;
+  font-weight: 400;
+  width:140px;
+  margin-bottom: 30px;
+}
+
+.depcleanGraph .wrapper{
+  position: relative;
+}
+
+.depcleanGraph .tooltip {
+  opacity: 0;
+  position: absolute;
+  top: -12px;
+  left: 0;
+  padding: 0.6em 1em;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #ddd;
+  z-index: 100;
+  transition: all 0.2s ease-out;
+  /* Prevent tooltip from receiving the mouse events we will be implementing */
+  pointer-events: none;
+  /* max-width: 150px; */
+}
+
+.depcleanGraph .tooltip-left{
+  text-align:left;
+}
+
+/* Adds an arrow pointing down at the hovered bar */
+.depcleanGraph .tooltip-top:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: translate(-50%, 50%) rotate(45deg);
+  transform-origin: center center;
+  z-index: 10;
+}
+/* Adds an arrow pointing down at the hovered bar */
+.depcleanGraph .tooltip-left:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  top: 50%;
+  left:0;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: translate(-50%, 50%) rotate(135deg);
+  transform-origin: center center;
+  z-index: 10;
+}
+
+/* Adds an arrow pointing down at the hovered bar */
+.depcleanGraph .tooltip-bottom:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  top: -2%;
+  left:50%;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: translate(-50%, 50%) rotate(225deg);
+  transform-origin: center top;
+  z-index: 10;
+}
+
+/* Adds an arrow pointing down at the hovered bar */
+.depcleanGraph .tooltip-right:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  top: 50%;
+  left:100%;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: translate(-50%, 50%) rotate(-45deg);
+  transform-origin: center center;
+  z-index: 10;
+}
+
+.depcleanGraph .tooltip-range {
+  margin-bottom: 0.2em;
+  font-weight: 600;
+}
+
+.depcleanGraph .toolTip-tittle{
+  font-size: 18px;
+  font-weight: 500;
+}
+.depcleanGraph .toolTip-sub{
+  font-size: 14px;
+  font-weight: 500;
+  color: hsla(0,0%,0%, .3);
+}
+.depcleanGraph .toolTip-value{
+  font-weight: 400;
+}
+.depcleanGraph .square-text{
+ display: block;
+ padding:5px 0 0 15px;
+
+ overflow: hidden;
+ -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+
+.depcleanGraph .square-text .title{
+  font-size: 14px;
+  font-weight: 600;
+  color:white;
+  display: block;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.depcleanGraph .square-text .sub-title{
+  font-size: 12px;
+  color:white;
+  display: block;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+/* GALLERY STYLES */
+
+.depcleanGraph #gallery{
+  color:#0E1D08;
+  background-color: #FFFFFF;
+}
+
+.depcleanGraph #gallery .tittle{
+  margin-bottom: 50px;
+}
+
+.depcleanGraph #gallery img{
+  width: 300px;
+  height: auto;
+}
+.depcleanGraph h1{
+  font-size: 48px;
+  color:#0E1D08;
+  
+}
+
+.depcleanGraph p{
+  font-size: 18px;
+}
+
+.depcleanGraph #gallery .project{
+  background:#F3F5F7;
+  padding: 0!important;
+  overflow: hidden;
+}
+.depcleanGraph .flex{
+  display: flex;
+}
+.depcleanGraph .flex .center{
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.depcleanGraph .flex-wrap{
+  flex-wrap: wrap;
+}
+
+.depcleanGraph .flex-justify-center{
+  justify-content: center;
+}
+
+.depcleanGraph .flex-center{
+  align-items:center
+}
+
+.depcleanGraph .flex-enter{
+  align-items: flex-start;
+  
+  /* justify-content: center; */
+}
+
+.depcleanGraph .flex-vertical{
+  flex-direction: column;
+}
+
+.depcleanGraph .flex-base{
+  align-items: baseline;
+}
+
+.depcleanGraph .button{
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  height: 50px;
+  padding: 6.4px 30px;
+  margin-left: 10px;
+  
+}
+
+.depcleanGraph .margin-30{
+  margin-top:30px;
+}
+.depcleanGraph .margin-20{
+  margin-top:20px;
+}
+
+.depcleanGraph .margin-buttom-20{
+  margin-bottom:20px
+}
+.depcleanGraph .margin-buttom-40{
+  margin-bottom:40px
+}
+.depcleanGraph .margin-5{
+  margin-top:5px;
+}
+
+.depcleanGraph .border-decorator{
+  border-top: 1px solid #f0f0f5;
+}
+
+.depcleanGraph .slider-theme{
+  padding: 5px 21px;
+  /* border-radius: 15px; */
+  /* border: 3px hsla(119, 38%, 56%, .3) solid; */
+}
+.depcleanGraph .slider-theme .tittle{
+  font-weight: 600;
+  font-size: 18px;
+  color: #64C19A;
+}
+.depcleanGraph .ant-slider-track{
+  background-color: #64C19A !important;
+}
+.depcleanGraph .ant-slider-handle {
+  border: solid 2px #64C19A !important;
+}
+.depcleanGraph .ant-slider-dot-active {
+  border-color: #64C19A !important;
+}
+
+.depcleanGraph .button.btn-green{
+  background-color: #64C19A!important;
+  border: none;
+}
+
+/* MAIN INFO */
+.depcleanGraph #MainInfo h1{
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 0;
+  margin-right: 40px;
+}
+
+/* MAIN PAGE */
+.depcleanGraph .version-num{
+  font-size: 18px;
+  color:hsla(0,0%,0%, 0.4);
+}
+
+.depcleanGraph .dataInfo{
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 12px;
+  color: hsla(0,0%,0%, .4);
+  margin-right:20px;
+}
+
+.depcleanGraph .dataInfo span{
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: -6px;
+  color: hsla(0,0%,0%, .6);
+}
+
+.depcleanGraph .dependencies{
+   color: hsla(0,0%,0%, .7);
+}
+.depcleanGraph .dependencies span{
+   color: hsla(0,0%,0%, .7);
+}
+.depcleanGraph .dependencies h3{
+   color: hsla(0,0%,0%, .7);
+   font-size: 12px;
+   font-weight: 400;
+   margin: 0;
+   opacity: 0.4;
+}
+
+.depcleanGraph .bloated{
+  color:hsla(2,79%,68%,.7);
+}
+.depcleanGraph .bloated span{
+  color:hsla(2,79%,68%,.7);
+}
+.depcleanGraph .bloated h3{
+  color:hsla(2,79%,68%,.7);
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* GALLERY */
+
+.depcleanGraph #gallery .description{
+  padding: 10px 20px 0 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.depcleanGraph #gallery .description a{
+  margin-top:10px;
+  color: hsl(155,43%, 47%, 0.5);
+  font-weight: 500;
+}
+
+.depcleanGraph #gallery .gal-tittle{
+  background-color: white;
+  height: 50%;
+  padding: 20px 20px 0 20px;
+}
+.depcleanGraph #gallery .gal-tittle h3{
+  font-size: 32px !important;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.depcleanGraph #gallery .gal-tittle span{
+  font-size: 20px !important;
+  margin-right: 15px;
+  font-weight: 400;
+  color: hsl(0,0%, 0%, 0.2);
+}
+
+.depcleanGraph #gallery .gal-tittle p{
+  font-size: 16px !important;
+ 
+}
+.depcleanGraph #gallery .table-report{
+  width: 265px;
+}
+.depcleanGraph #gallery .table-report th{
+  font-size: 12px;
+  font-weight: 400;
+  text-align: right;
+  color: hsl(0,0%, 0%, 0.5);
+}
+
+.depcleanGraph #gallery .table-report th:first-child{
+  text-align: left;
+  
+}
+
+.depcleanGraph #gallery .table-report tr td{
+  font-size: 16px;
+  font-weight: 400;
+  text-align: right;
+  font-weight: 600;
+  color:hsl(102,56%,14%, 40%)
+
+}
+
+.depcleanGraph #gallery .table-report tr td.highlight-red{
+  color:#EE706B;
+  
+}
+
+.depcleanGraph #gallery .table-report tr td:first-child{
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  color:#0E1D08;
+}
+
+.depcleanGraph .width-90{
+  width: 265px;
+}
+
+.depcleanGraph .margin-xs{
+  margin-bottom: 40px;
+}
+
+.depcleanGraph .boder-round{
+  border-radius: 10px;
+}
+
+.depcleanGraph .shadow-xs{
+  box-shadow: 0 1px 3px hsla(0,0%,0%, .2);
+}
+
+.depcleanGraph .shadow-s{
+  box-shadow: 0 4px 6px hsla(0,0%,0%, .2);
+}
+
+.depcleanGraph .shadow-m{
+  box-shadow: 0 5px 15px hsla(0,0%,0%, .2);
+}
+
+.depcleanGraph .shadow-l{
+  box-shadow: 0 10px 24px hsla(0,0%,0%, .2);
+}
+
+.depcleanGraph .shadow-xl{
+  box-shadow: 0 15px 3px hsla(0,0%,0%, .2);
+}
+
+
+.depcleanGraph .pull-left{
+  margin-left: auto;
+}
+
+
+/* dependenceProvency */
+.depcleanGraph #dependenceProvency{
+  background-color: white;
+}
+
+.depcleanGraph .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color: #64C19A!important;
+}
+.depcleanGraph .ant-tabs-tab{
+  font-size: 18px ;
+  color: hsla(0,0%,0%, .3);
+}
+.depcleanGraph ant-tabs-tab-btn:focus, .ant-tabs-tab-remove:focus, .ant-tabs-tab-btn:active, .ant-tabs-tab-remove:active {
+  color: #64C19A!important;
+}
+.depcleanGraph .ant-tabs-tab-btn:focus, .ant-tabs-tab-remove:focus, .ant-tabs-tab-btn:active, .ant-tabs-tab-remove:active {
+  color: #64C19A!important;
+}
+.depcleanGraph .ant-tabs-tab:hover {
+  color: #64C19A!important;
+}
+
+.depcleanGraph .ant-tabs-ink-bar {
+  background:#64C19A!important;
+}
+
+/* ::selection {
+  color: #fff;
+  color: #64C19A!important;
+} */
+
+/* CHART */
+.depcleanGraph line.Axis__line {
+  stroke: hsla(0,0%,0%, 0.2);
+  stroke-width: 1px;
+}
+
+.depcleanGraph .axis_label{
+    font-size: 14px;
+    font-weight: 300;
+    fill: rgb(0 0 0 / 0.3);
+}
+
+.depcleanGraph .axis__tick{
+  font-size: 14px;
+  font-weight: 300;
+  fill: rgb(0 0 0 / 0.3);
+}
+
+.depcleanGraph .axis__tick:last-child{
+  text-anchor:end;
+}
+/* TREE MAP */
+.depcleanGraph .square_treemap {
+  stroke: white;
+  opacity: 1;
+}
+
+.depcleanGraph .text-message{
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 30px;
+    color: rgb(193, 193, 193);
+    
+}
+
+
+.depcleanGraph .dropzone{
+  border: 2px dashed #64C19A;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.depcleanGraph .icon-large{
+  font-size: 72px;
+}
+.depcleanGraph .icon-large path{
+  fill:#64C19A;
+}
+
+.depcleanGraph .project-scan{
+  background:#F3F5F7;
+  padding: 0!important;
+  overflow: hidden;
+  height: 15vh;
+  max-height: 200px;
+}
+
+.depcleanGraph .project-scan .description{
+  padding: 10px 20px 0 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.depcleanGraph .project-scan .description a{
+  margin-top:10px;
+  color: hsl(155,43%, 47%, 0.5);
+  font-weight: 500;
+}
+.depcleanGraph .project-scan .gal-tittle{
+  background-color: white;
+  height: 50%;
+  padding: 20px 20px 0 20px;
+}
+.depcleanGraph .project-scan .gal-tittle h3{
+  font-size: 32px !important;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.depcleanGraph .project-scan .gal-tittle span{
+  font-size: 20px !important;
+  margin-right: 15px;
+  font-weight: 400;
+  color: hsl(0,0%, 0%, 0.2);
+}
+.depcleanGraph .project-scan .gal-tittle p{
+  font-size: 16px !important;
+}
+
+.depcleanGraph .project-scan .table-report{
+  width: 265px;
+}
+
+.depcleanGraph .project-scan .table-report th{
+  font-size: 12px;
+  font-weight: 400;
+  text-align: right;
+  color: hsl(0,0%, 0%, 0.5);
+}
+.depcleanGraph .project-scan .table-report th:first-child{
+  text-align: left;
+  
+}
+.depcleanGraph .project-scan .table-report tr td{
+  font-size: 16px;
+  font-weight: 400;
+  text-align: right;
+  font-weight: 600;
+  color:hsl(102,56%,14%, 40%)
+
+}
+.depcleanGraph .project-scan .table-report tr td.highlight-red{
+  color:#EE706B;
+  
+}
+.depcleanGraph .project-scan .table-report tr td:first-child{
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  color:#0E1D08;
+}
+
+.depcleanGraph .margin-auto{
+  margin:auto;
+}
+.depcleanGraph .invisibleDisplay{
+  display: none;
+}
+.depcleanGraph .space-w{
+  width:10px;
+  display: block;
+}
+.depcleanGraph .spacer-h{
+  height:10px;
+  display: block;
+}
+
+.depcleanGraph .spacer-h.spacer-h-m{
+  height:20px;
+  display: block;
+}
+
+.depcleanGraph .spacer-h.spacer-h-l{
+  height:40px;
+  display: block;
+}
+
+.depcleanGraph .p-xl{
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.depcleanGraph .main-url p{
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.depcleanGraph .color-green{
+  color:#64C19A; 
+}
+.depcleanGraph .unHighlight{
+  color:rgb(218, 218, 218);
+}
+
+.depcleanGraph .text-center{
+  text-align: center;
+}
+
+.depcleanGraph .text-small{
+  font-size: 18px;
+}
+
+.depcleanGraph .link-green{
+ color:#64C19A; 
+}
+
+.depcleanGraph .underline-text{
+  text-decoration: underline;
+  text-decoration-color: #64C19A;  
+}
+
+.depcleanGraph .mid-size{
+  max-width: 220px;
+}
+
+.depcleanGraph .ant-btn-primary[disabled], .ant-btn-primary[disabled]:hover, .ant-btn-primary[disabled]:focus, .ant-btn-primary[disabled]:active{
+  color:white !important; 
+  background-color: #61766d!important ;
+}
+
+.depcleanGraph .message{
+  font-size: 32px;
+  margin: auto;
+}
+.depcleanGraph .message-loading{
+  color: #64C19A;
+}
+
+.depcleanGraph .message-error{
+ color:#EE706B; 
+}
+
+.depcleanGraph #MainInfo{
+  background-color: #F8F9FA;
+}
+
+.depcleanGraph .ant-layout-content {
+  background-color: white;
+}
+
+.depcleanGraph #legend{
+  position: absolute;
+    z-index: 10;
+    background: rgba(255,255,255,0.7);
+}
+.depcleanGraph #legend .tittle{
+  display:block;
+  width: 100%;
+}
+.depcleanGraph .color-legend{
+  width:100%;
+}
+.depcleanGraph .dashed{
+  background: #fff;
+  color: rgba(0, 0, 0, 0.85);
+  border-color: #d9d9d9;
+  border-style: dashed;
+  padding: 10px;
+  border-width: 1px;
+}
+.depcleanGraph .color-legend{
+  margin-right:10px;
+  
+}
+.depcleanGraph .color-legend span{
+  font-size: 12px;
+  margin-left:5px;
+}
+.depcleanGraph .color-ratio{
+  width:100%
+}
+.depcleanGraph .color-ratio span{
+  font-size:12px;
+  margin:0 5px;
+}
+
+.depcleanGraph .color-container{
+  width:30px;
+  height:30px;
+}
+
+.depcleanGraph .ant-tree{
+  background: rgba(255,255,255,0.8);
+}
+.depcleanGraph .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+  background-color: hsla(2,79%,68%,.5);
+}
+
+.depcleanGraph .legend-top{
+  top: 0;
+  left: 15%;
+  flex-direction: column;
+  height: 60px;
+  width: 410px;
+  flex-wrap: wrap; 
+}
+.depcleanGraph .legend-right{
+  top: 70px;
+  right: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 160px;
+}
+

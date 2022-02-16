@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, useLayoutEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import GridLayout, { WidthProvider } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+
+import { SizeContext } from "./visualization/depclean/DepcleanGraph";
 
 const Grid = WidthProvider(GridLayout)
 
@@ -13,6 +15,24 @@ const useStyles = makeStyles((theme) => ({
             {backgroundColor: "white"},
     },
 }))
+
+const GridComponent = ({ children }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [size, setSize] = useState({ width: 0, height: 0 });
+
+    useLayoutEffect(() => {
+        if (ref.current) {
+            console.log(ref.current.clientWidth, ref.current.clientHeight);
+            setSize({ width: ref.current.clientWidth, height: ref.current.clientHeight });
+        }
+    });
+
+    return (
+        <div style={{ width: "100%", height: "100%" }} ref={ref}>
+            <SizeContext.Provider value={size}>{ children }</SizeContext.Provider>
+        </div>
+    );
+};
 
 /**
  * Main is the part of the dashboard
@@ -41,7 +61,7 @@ export default function Main(props) {
                 isResizable
                 draggableHandle=".titleBar"
             >
-                {children.map( (widget, key) => <div key={key}> {widget} </div>)}
+                {children.map( (widget, key) => <div key={key}>{widget}</div>)}
             </Grid>
     );
 }
