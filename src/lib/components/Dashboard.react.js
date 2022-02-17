@@ -65,8 +65,6 @@ export default function Dashboard(props) {
     const [metaDataKey, setMetaDataKey] = useState(-1)
     const isPanelOpen = metaDataKey !== -1;
 
-    const children_ = [...children, <Widget meta={TEST_DATA.meta}><DepcleanGraph data={TEST_DATA.results}/></Widget>];
-
     const toggleMenu = () => { setIsMenuOpen(!isMenuOpen) }
 
     const showMetaData = (meta, key) => {
@@ -113,7 +111,7 @@ export default function Dashboard(props) {
                     })}
                     showMetaData={showMetaData}
                 >
-                    {children_}
+                    {children}
                 </Main>
             <InfoPanel
                 isOpen={isPanelOpen}
