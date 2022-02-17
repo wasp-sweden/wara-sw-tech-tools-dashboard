@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo, useRef, CSSProperties, useContext } from 'react';
+import React, { useState, useEffect, useMemo, useRef, CSSProperties, useContext, useLayoutEffect } from 'react';
 import { MainInfo } from './private/MainInfo';
 import { Row } from 'antd';
 import { HorizontalPartitionTree } from './private/HorizontalPartitionTree';
@@ -15,23 +15,10 @@ import { AppStateProvider, useAppState } from './private/AppStateContext';
 import { AppMenuStateProvider } from './private/AppMenuStateContext';
 import * as PropTypes from "prop-types";
 import "./DepcleanGraph.css";
-
-// TODO: this needs to live somewhere else
-export const SizeContext = React.createContext({ width: 0, height: 0 });
+import { WidgetContext } from "../../common";
 
 /** DepClean graph */
 export default function DepcleanGraph({ data }: { data: any}) {
-
-    //const ref = useRef<HTMLDivElement>(null);
-
-    //const [size, setSize] = useState<{ width: number, height: number } | null>(null);
-
-    //useEffect(() => {
-    //    if (ref.current && size === null) {
-    //        setSize({ width: ref.current.clientWidth, height: ref.current.clientHeight });
-    //    }
-    //}, [ref]);
-
     return <AppStateProvider>
         <AppMenuStateProvider>
             <InnerComponent data={data}/>
@@ -45,21 +32,10 @@ const InnerComponent = ({ data } : { data: any }) => {
 
     const [loading, setLoading] = useState(false);
 
-    const size = useContext(SizeContext);
-
-    //modify size on resize
-    //useEffect(() => {
-    //    function handleResize() {
-    //        if (size.width !== window.innerWidth && size.height !== window.innerHeight) setSize({
-    //            width: window.innerWidth,
-    //            height: window.innerHeight
-    //        })
-    //    }
-    //    window.addEventListener('resize', handleResize)
-    //})
-
     const appState = "0111111111";
     const { dispatch } = useAppState();
+
+    const { width, height } = useContext(WidgetContext);
 
     useEffect(() => {
 
@@ -68,7 +44,6 @@ const InnerComponent = ({ data } : { data: any }) => {
                 const project: artifact = createProject(data);
                 upDateMenuState(project);
                 setLoading(false);
-                console.log("loaded test project");
                 resolve();
             }, 1000));
         }
@@ -97,16 +72,16 @@ const InnerComponent = ({ data } : { data: any }) => {
     }, [appState])
 
     const divStyle: CSSProperties = {
-        border: "2px dotted black",
+        height: "100%",
     }
-
 
     //DATA FOR TREE
     const dimensions: dimension = useMemo(
-        () => getInitialSize(size.width, size.height), [size.width, size.height]
+        () => getInitialSize(width, height), [width, height]
     )
+
     return (
-        <div ref={componentRef} className="depcleanGraph">
+        <div className="depcleanGraph">
             {loading === false ?
                 <div style={divStyle}>
                     {/*<Row id="MainInfo" className={"margin-buttom-20"} key={uuidv4()} >

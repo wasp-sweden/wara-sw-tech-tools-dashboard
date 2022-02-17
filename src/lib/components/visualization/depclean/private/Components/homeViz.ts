@@ -62,7 +62,7 @@ export const getInitialSize = (width: number, height: number): dimension => {
         marginRight: 50,
         marginBottom: 50,
         marginLeft: 50,
-        boundedHeight: height - 250,
+        boundedHeight: height, // - 250,
         boundedWidth: width - (width * 0.0416666667) - (width * 0.0833333333),
     }
 }

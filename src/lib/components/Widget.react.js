@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react';
+import React, {useContext, useState, useLayoutEffect, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 
-import { WidgetContext } from './Main.react';
+import { WidgetContext } from './common';
 
 const useStyles = makeStyles((theme) => ({
     widget: {
@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
             height: "100%",
             width: "100%",
         },
+        position: "relative",
         overflow: "hidden",
     },
 }))
@@ -52,6 +53,31 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
     const theme = useTheme();
     const { showMetaData, key } = useContext(WidgetContext);
+
+    const ref = useRef(null);
+    const [size, setSize] = useState({
+        width: 100,
+        height: 100,
+    });
+
+    const recomputeSize = () => {
+        if (ref.current != null) {
+            const width = ref.current.clientWidth;
+            const height = ref.current.clientHeight;
+            if (width != size.width || height != size.height) {
+                setSize({
+                    width: ref.current.clientWidth,
+                    height: ref.current.clientHeight,
+                });
+            }
+        }
+    }
+
+    useLayoutEffect(recomputeSize);
+    useEffect(() => {
+        window.addEventListener("resize", recomputeSize);
+        return () => window.removeEventListener("resize", recomputeSize);
+    });
     
     return (
         <Paper 
@@ -83,11 +109,14 @@ const useStyles = makeStyles((theme) => ({
                     </div>
                 </Toolbar>
             </AppBar>
-            <Box 
+            <div 
+                ref={ref}
                 className={classes.content}
             >
-                {children}
-            </Box>  
+                <WidgetContext.Provider value={{ showMetaData, key, width: size.width, height: size.height }}>
+                    {children}
+                </WidgetContext.Provider>
+            </div>  
         </Paper> 
     );
 }

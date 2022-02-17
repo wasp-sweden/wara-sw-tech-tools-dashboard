@@ -17,7 +17,7 @@
     "prepublishOnly": "npm run validate-init",
     "build:js": "webpack --mode production",
     "build:ts": "tsc",
-    "build:backends": "dash-generate-components ./src/lib/components tep_dashboard -p package-info.json --r-prefix '' --jl-prefix '' --ignore \\.test\\. --ignore src/lib/components/visualization/depclean/private",
+    "build:backends": "dash-generate-components ./src/lib/components tep_dashboard -p package-info.json --r-prefix '' --jl-prefix '' --ignore \\.test\\. --ignore src/lib/components/common.js --ignore src/lib/components/visualization/depclean/private",
     "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
     "build": "npm run build:ts && npm run build:js && npm run build:backends",
     "build:activated": "npm run build:ts && npm run build:js && npm run build:backends-activated"
