@@ -45,9 +45,10 @@ const initialLayout = (children) => children.map((_, i) => ({
  * that displays all data.
  */
 export default function Main(props) {
-    const {id, label, setProps, value, showMetaData, className, children} = props;
+    const {id, label, setProps, value, showMetaData, className} = props;
     const classes = useStyles();
     const theme = useTheme();
+    const children = React.Children.toArray(props.children);
 
     const [layout, setLayout] = useState(initialLayout(children));
     
