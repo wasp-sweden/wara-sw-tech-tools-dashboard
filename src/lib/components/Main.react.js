@@ -36,6 +36,10 @@ const GridComponent = ({ children }) => {
     );
 };
 
+const initialLayout = (children) => children.map((_, i) => ({
+    i: `${i}`, x: (i%2)*6, y: Math.ceil(i / 2) * 8, w: 6, h: 8
+}));
+
 /**
  * Main is the part of the dashboard
  * that displays all data.
@@ -45,12 +49,7 @@ export default function Main(props) {
     const classes = useStyles();
     const theme = useTheme();
 
-    const [layout, setLayout] = useState([
-        {i: '0', x: 0, y: 0, w: 6, h: 6},
-        {i: '1', x: 1, y: 0, w: 6, h: 6},
-        {i: '2', x: 4, y: 0, w: 6, h: 6},
-        {i: '3', x: 6, y: 0, w:6, h:6}
-      ]);
+    const [layout, setLayout] = useState(initialLayout(children));
     
     return (
             <Grid 
