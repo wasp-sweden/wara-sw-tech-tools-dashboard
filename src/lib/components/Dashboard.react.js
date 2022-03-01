@@ -16,10 +16,7 @@ import { styled, createTheme, ThemeProvider } from '@material-ui/core';
 
 import Main from './Main.react';
 import Menu from './Menu.react';
-import Widget from './Widget.react';
 import InfoPanel from './InfoPanel.react';
-
-import { DepcleanGraph } from "./visualization/depclean/DepcleanGraph.react";
 
 const useStyles = makeStyles( (theme) => ({
     appBar: {
@@ -56,7 +53,7 @@ const useStyles = makeStyles( (theme) => ({
  * which is editable by the user.
  */
 export default function Dashboard(props) {
-    const {id, label, setProps, value, children} = props;
+    const { children } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -129,16 +126,6 @@ Dashboard.propTypes = {
      * The ID used to identify this component in Dash callbacks.
      */
     id: PropTypes.string,
-
-    /**
-     * A label that will be printed when this component is rendered.
-     */
-    label: PropTypes.string.isRequired,
-
-    /**
-     * The value displayed in the input.
-     */
-    value: PropTypes.string,
 
     /**
      * Children.

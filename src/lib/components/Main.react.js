@@ -7,8 +7,6 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import clsx from 'clsx';
 
-import { SizeContext } from "./visualization/depclean/DepcleanGraph.react";
-
 const Grid = WidthProvider(GridLayout)
 
 const useStyles = makeStyles((theme) => ({
@@ -17,24 +15,6 @@ const useStyles = makeStyles((theme) => ({
             {backgroundColor: "white"},
     },
 }))
-
-const GridComponent = ({ children }) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const [size, setSize] = useState({ width: 0, height: 0 });
-
-    useLayoutEffect(() => {
-        if (ref.current) {
-            console.log(ref.current.clientWidth, ref.current.clientHeight);
-            setSize({ width: ref.current.clientWidth, height: ref.current.clientHeight });
-        }
-    });
-
-    return (
-        <div style={{ width: "100%", height: "100%" }} ref={ref}>
-            <SizeContext.Provider value={size}>{ children }</SizeContext.Provider>
-        </div>
-    );
-};
 
 const initialLayout = (children) => children.map((_, i) => ({
     i: `${i}`, x: (i%2)*6, y: Math.ceil(i / 2) * 8, w: 6, h: 8
@@ -45,9 +25,8 @@ const initialLayout = (children) => children.map((_, i) => ({
  * that displays all data.
  */
 export default function Main(props) {
-    const {id, label, setProps, value, showMetaData, className, children} = props;
+    const {showMetaData, className, children} = props;
     const classes = useStyles();
-    const theme = useTheme();
 
     const [layout, setLayout] = useState({});
     
@@ -83,11 +62,6 @@ Main.propTypes = {
      * The ID used to identify this component in Dash callbacks.
      */
     id: PropTypes.string,
-
-    /**
-     * The value displayed in the input.
-     */
-    value: PropTypes.string,
 
     /**
      * Children.

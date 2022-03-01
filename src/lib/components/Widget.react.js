@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
  * A widget to display data in the grid
  */
  export default function Widget(props) {
-    const {id, label, setProps, value, title, meta, children} = props;
+    const {id, setProps, title, meta, children} = props;
     const classes = useStyles();
     const theme = useTheme();
     const { showMetaData, key } = useContext(WidgetContext);
@@ -128,11 +128,6 @@ Widget.propTypes = {
      * The ID used to identify this component in Dash callbacks.
      */
     id: PropTypes.string,
-
-    /**
-     * The value displayed in the input.
-     */
-    value: PropTypes.string,
 
     /**
      * The title that will be displayed on the widget.
