@@ -1,4 +1,4 @@
-import React, {Component, useLayoutEffect, useRef, useState, useEffect} from 'react';
+import React, {Component, useLayoutEffect, useRef, useState, useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import GridLayout, { WidthProvider } from "react-grid-layout";
@@ -25,8 +25,9 @@ const initialLayout = (children) => children.map((_, i) => ({
  * that displays all data.
  */
 export default function Main(props) {
-    const {showMetaData, className, children} = props;
+    const {showMetaData, className} = props;
     const classes = useStyles();
+    const children = useMemo(() => React.Children.toArray(props.children), [props.children]);
 
     const [layout, setLayout] = useState({});
     
