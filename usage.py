@@ -38,13 +38,14 @@ widgets = [
     )
 ]
 
+dashboards = { "test": "Test Dashboard" }
 
 app.layout = tep_dashboard.Dashboard(
                 id='input',
-                value='my-value',
-                label='my-label',
                 children=widgets,
+                dashboards=dashboards,
+                selected="test"
             )
 
 if __name__ == '__main__':
-    app.run_server(host="0.0.0.0", debug=True)
+    app.run_server(host="0.0.0.0", port=8051, debug=True)

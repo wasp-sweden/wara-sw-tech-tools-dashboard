@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { useState } from 'react';
 import { drawerWidth } from './Menu.react';
 import Box from '@material-ui/core/Box';
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, Typography } from '@material-ui/core';
 import { styled, createTheme, ThemeProvider } from '@material-ui/core';
 
 import Main from './Main.react';
@@ -43,6 +43,11 @@ const useStyles = makeStyles( (theme) => ({
         width: `calc(100% - ${drawerWidth}px)`,
         marginRight: drawerWidth,
     },
+    logo: {
+        height: "1.5em",
+        marginLeft: "24px",
+        marginRight: "24px",
+    }
 }))
 
 /**
@@ -53,7 +58,7 @@ const useStyles = makeStyles( (theme) => ({
  * which is editable by the user.
  */
 export default function Dashboard(props) {
-    const { children } = props;
+    const { children, dashboards, selected } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,7 +79,6 @@ export default function Dashboard(props) {
         setTimeout(() => window.dispatchEvent(new Event('resize')), 1);
     } 
     
-    // TO-DO: "dashboards" should be prop for Dashboard
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
@@ -91,16 +95,17 @@ export default function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
+                    <img className={classes.logo} src="https://wasp-sweden.org/wp-content/themes/wasp/assets/img/logo_inverse.png"/>
+                    <Typography variant="h6">
+                        WARA-SW Dashboard: { dashboards[selected] }
+                    </Typography>
                 </Toolbar>
             </AppBar> 
             <Toolbar/>
             <Menu 
                 toggle={toggleMenu}
                 isOpen={isMenuOpen}
-                dashboards={ {
-                    depclean: "DepClean",
-                    vaccinate: "V.A.C.C.I.N.A.T.E",
-            } }>
+                dashboards={dashboards}>
             </Menu>
                 <Main 
                     className={clsx(classes.main, {
@@ -126,6 +131,16 @@ Dashboard.propTypes = {
      * The ID used to identify this component in Dash callbacks.
      */
     id: PropTypes.string,
+
+    /**
+     * Dashboards { key: title }
+     */
+    dashboards: PropTypes.object,
+
+    /**
+     * Currently open dashbord.
+     */
+    selected: PropTypes.string,
 
     /**
      * Children.
