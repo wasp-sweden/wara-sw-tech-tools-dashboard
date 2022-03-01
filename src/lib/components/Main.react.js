@@ -1,4 +1,4 @@
-import React, {Component, useLayoutEffect, useRef, useState} from 'react';
+import React, {Component, useLayoutEffect, useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import GridLayout, { WidthProvider } from "react-grid-layout";
@@ -49,7 +49,10 @@ export default function Main(props) {
     const classes = useStyles();
     const theme = useTheme();
 
-    const [layout, setLayout] = useState(initialLayout(children));
+    const [layout, setLayout] = useState({});
+    
+    // When children change, calculate new initial layout (a bit of a hack):
+    useEffect(() => setLayout(initialLayout(children)), [children]);
     
     return (
             <Grid 
