@@ -29,7 +29,7 @@ export default function Main(props) {
     const classes = useStyles();
     const children = useMemo(() => React.Children.toArray(props.children), [props.children]);
 
-    const [layout, setLayout] = useState({});
+    const [layout, setLayout] = useState([]);
     
     // When children change, calculate new initial layout (a bit of a hack):
     useEffect(() => setLayout(initialLayout(children)), [children]);
