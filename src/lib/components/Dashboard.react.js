@@ -97,7 +97,7 @@ export default function Dashboard(props) {
                     </IconButton>
                     <img className={classes.logo} src="https://wasp-sweden.org/wp-content/themes/wasp/assets/img/logo_inverse.png"/>
                     <Typography variant="h6">
-                        WARA-SW Dashboard: { dashboards[selected] }
+                        WARA-SW Dashboard: <b>{ dashboards[selected] }</b>
                     </Typography>
                 </Toolbar>
             </AppBar> 
