@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
  * A widget to display data in the grid
  */
  export default function Widget(props) {
-    const {id, setProps, title, meta, children} = props;
+    const { title, meta, children } = props;
     const classes = useStyles();
     const theme = useTheme();
     const { showMetaData, key } = useContext(WidgetContext);
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
                     <div className={classes.tools}>
                         <DragIndicatorIcon 
                             className={`${classes.dragIcon} dragIcon`}
-                            color={theme.palette.text.secondary}
+                            style={{ color: theme.palette.text.secondary }}
                         >
                         </DragIndicatorIcon>
                         <IconButton onClick={ () => showMetaData(meta, key)}>
