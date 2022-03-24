@@ -57,7 +57,11 @@ export default function Menu(props) {
             <Divider />
             <List>
                 {Object.keys(dashboards).map(key => (
-                <ListItem button key={key}>
+                <ListItem 
+                    button 
+                    key={key}
+                    onClick={ () => window.location.href = key}
+                >
                     <ListItemText primary={dashboards[key]} />
                 </ListItem>
             ))}
