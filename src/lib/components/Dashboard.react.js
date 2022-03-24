@@ -18,6 +18,7 @@ import Main from './Main.react';
 import Menu from './Menu.react';
 import InfoPanel from './InfoPanel.react';
 
+
 const useStyles = makeStyles( (theme) => ({
     appBar: {
         transition: theme.transitions.create(['margin', 'width'], {
@@ -61,11 +62,13 @@ export default function Dashboard(props) {
     const { children, dashboards, selected } = props;
     const classes = useStyles();
     const theme = useTheme();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    let [isMenuOpen, setIsMenuOpen] = useState(false);
     //const [isPanelOpen, setIsPanelOpen] = useState(false)
     const [metaData, setMetaData] = useState({})
     const [metaDataKey, setMetaDataKey] = useState(-1)
     const isPanelOpen = metaDataKey !== -1;
+
+    isMenuOpen = isMenuOpen || !selected;
 
     const toggleMenu = () => { setIsMenuOpen(!isMenuOpen) }
 
