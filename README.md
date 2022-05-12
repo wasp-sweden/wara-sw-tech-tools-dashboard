@@ -1,11 +1,7 @@
 # tep-dashboard
 
-tep-dashboard is a Dash component library.
+This repository contains Plotly Dash components for the [wara-sw-tech-tools](https://github.com/wasp-sweden/wara-sw-tech-tools) dashboard (http://wara-sw.se/).
 
-Get started with:
-1. Install Dash and its dependencies: https://dash.plotly.com/installation
-2. Run `python usage.py`
-3. Visit http://localhost:8050 in your web browser
 
 ## Contributing
 
