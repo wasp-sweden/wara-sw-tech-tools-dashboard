@@ -22,6 +22,6 @@
   },
   "include": [
     "src/lib/components/visualization/depclean",
-    "src/lib/components/common.ts",
+    "src/lib/components/common.ts"
   ]
 }
